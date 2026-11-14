@@ -50,11 +50,15 @@
     <article class="doc" id="privacy" aria-labelledby="privacy-title">
       <p class="eyebrow">Legal</p>
       <h1 id="privacy-title">Privacy Policy</h1>
-      <p class="meta"><span><b>Effective:</b> November 1, 2026</span><span><b>Last updated:</b> November 10, 2026</span><span><b>Applies to:</b> BulkAuto for Windows and macOS</span></p>
+      <p class="meta"><span><b>Effective:</b> November 1, 2026</span><span><b>Last updated:</b> November 14, 2026</span><span><b>Applies to:</b> BulkAuto for Windows and macOS</span></p>
 
       <section class="summary" aria-label="What changed">
         <h2>What changed on November 4, 2026</h2>
         <ul>
+          <li>November 14, 2026: connecting also uses Intuit Single Sign-on (from version 1.40.0). Intuit tells our
+            sign-in service your name, email address and whether the address is verified; the service checks it and
+            passes it to the app without keeping it, and the app keeps it on your computer to show who connected each
+            company. See <a href="#privacy-2">section 2</a> and <a href="#privacy-4">section 4</a>.</li>
           <li>The app's button for connecting is now called Connect to QuickBooks, as Intuit asks, and the app is called
             only BulkAuto.</li>
           <li>The saved connection on your computer now keeps the QuickBooks company ID encrypted too (from version
@@ -121,6 +125,7 @@
           <thead><tr><th scope="col">Information</th><th scope="col">Examples</th><th scope="col">Source</th></tr></thead>
           <tbody>
             <tr><td>Connection details</td><td>OAuth access and refresh tokens, QuickBooks company ID (realm ID)</td><td>Intuit, after you sign in and approve access (passed to the app through our sign-in service)</td></tr>
+            <tr><td>Intuit profile</td><td>Your name and email address as your Intuit account has them, whether Intuit has verified the email address, and Intuit's ID for your account (kept only as a one-way fingerprint)</td><td>Intuit, when you connect a company (from version 1.40.0); kept on your computer, encrypted, to show who connected each company</td></tr>
             <tr><td>QuickBooks records</td><td>Time entries; invoices, bills, journal entries, expenses, purchase orders, estimates, deposits and payments; customers, vendors, employees, products and services, and accounts</td><td>Your QuickBooks company, when you load, scan, change or upload records</td></tr>
             <tr><td>Files you choose</td><td>Spreadsheets (CSV) or backup files you upload, and lists you paste in (for example, copied from Excel)</td><td>Your computer</td></tr>
             <tr><td>Files you attach</td><td>Receipts, signed estimates, PDFs and other files you attach to transactions</td><td>Your computer</td></tr>
@@ -153,6 +158,11 @@
         versions before 1.26.1) to Intuit's sign-in pages. After you approve access,
         Intuit sends a one-time sign-in code to the service. The service exchanges it for your connection tokens using our
         Intuit app's credentials, holds them for at most 5 minutes until the app collects them, and then deletes them.
+        From version 1.40.0 it also checks with Intuit who signed in (Intuit Single Sign-on): it reads your name, email
+        address and whether the address is verified, connects nothing if it isn't verified, and hands the name and email
+        address to the app with the tokens without keeping them. When you connect or open the app from QuickBooks or the
+        QuickBooks App Store, rather than from the app, the service holds the connection for at most 30 minutes, until you
+        open the app, and then deletes it.
         When the access token is renewed (about every hour) and when you disconnect, the app sends the refresh token to the
         service, which passes it to Intuit and returns the result without storing it. The service never receives your
         QuickBooks data, and it doesn't log tokens, codes or the contents of requests. It runs on Cloudflare (Cloudflare,
