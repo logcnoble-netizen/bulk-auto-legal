@@ -6,6 +6,8 @@
 <title>Open BulkAuto</title>
 <meta name="description" content="BulkAuto is a Windows desktop app for QuickBooks Online. Open it from the Start menu, or download it.">
 <meta name="color-scheme" content="light dark">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-96.png" type="image/png" sizes="96x96">
@@ -36,7 +38,25 @@
       <p class="lead">BulkAuto is a Windows desktop app, not a website. You use it in its own window on your
         computer, and it connects to QuickBooks Online from there.</p>
 
-      <h2>Open the app</h2>
+      <!-- Launch from QuickBooks (Intuit Single Sign-on): this page goes straight on to Intuit through the BulkAuto
+           sign-in service, which signs you in without asking again and then opens the app on the company you
+           launched it from. The button does the same if the page stays here. -->
+      <div class="actions">
+        <a class="button" id="ssoLaunch" href="https://bulkauto-broker.timetool.workers.dev/v1/sso/launch?env=production">Open BulkAuto with QuickBooks</a>
+      </div>
+      <p class="note">Signs you in with your Intuit account, then opens BulkAuto on that QuickBooks company.</p>
+      <script>
+        (function () {
+          // ?env=sandbox: the Development launch address, for sandbox (test) companies. Nothing else in the
+          // address is read.
+          var sandbox = new URLSearchParams(location.search).get('env') === 'sandbox';
+          var to = 'https://bulkauto-broker.timetool.workers.dev/v1/sso/launch?env=' + (sandbox ? 'sandbox' : 'production');
+          document.getElementById('ssoLaunch').href = to;
+          location.replace(to);
+        })();
+      </script>
+
+      <h2>Or open the app yourself</h2>
       <ol class="steps">
         <li><b>Open the Start menu and choose BulkAuto.</b>
           <p>You can also double-click the BulkAuto shortcut on your desktop.</p></li>

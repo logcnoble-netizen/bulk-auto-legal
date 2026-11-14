@@ -6,6 +6,7 @@
 <title>BulkAuto Disconnected</title>
 <meta name="description" content="The connection between BulkAuto and your QuickBooks Online company has ended. How to reconnect.">
 <meta name="color-scheme" content="light dark">
+<meta name="referrer" content="no-referrer">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-96.png" type="image/png" sizes="96x96">
@@ -39,6 +40,22 @@
         undone after you reconnect.</p>
 
       <h2>Reconnect</h2>
+      <!-- Intuit Single Sign-on: connects again through the BulkAuto sign-in service, then opens the app on the
+           company (the same way as Get integration now in the QuickBooks App Store). -->
+      <p><a class="c2qb-link" id="ssoConnect" href="https://bulkauto-broker.timetool.workers.dev/v1/sso/connect?env=production"
+        aria-label="Connect to QuickBooks"><img class="c2qb-base" src="../img/C2QB_green_btn_med_default.svg" alt="" width="223" height="36"><img class="c2qb-hover" src="../img/C2QB_green_btn_med_hover.svg" alt="" width="223" height="36"></a></p>
+      <p class="note">Signs you in with your Intuit account, then opens BulkAuto on the company you choose.</p>
+      <script>
+        (function () {
+          // ?env=sandbox: the Development disconnect address, for sandbox (test) companies. Nothing else in the
+          // address is read (QuickBooks may add the company's ID; it isn't used or sent anywhere).
+          if (new URLSearchParams(location.search).get('env') === 'sandbox') {
+            document.getElementById('ssoConnect').href = 'https://bulkauto-broker.timetool.workers.dev/v1/sso/connect?env=sandbox';
+          }
+        })();
+      </script>
+
+      <p>Or from the app:</p>
       <ol class="steps">
         <li><b>Open BulkAuto</b> from the Start menu or your desktop.</li>
         <li><b>Click Connect to QuickBooks.</b>
