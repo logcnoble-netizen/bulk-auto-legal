@@ -1,0 +1,7 @@
+# The sign-in pages are steps in connecting to QuickBooks, not pages to search for.
+User-agent: *
+Disallow: /connect/
+Disallow: /launch/
+Disallow: /disconnect/
+
+Sitemap: https://getbulkauto.com/sitemap.xml
