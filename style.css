@@ -378,4 +378,13 @@ th { font-weight: 700; color: var(--ink-soft); font-size: 0.75rem; text-transfor
 .walkthrough video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 14px; background: #14236e;
   border: 1px solid var(--rule); box-shadow: 0 24px 60px rgba(20, 35, 110, .18), 0 4px 14px rgba(20, 35, 110, .1); }
 .walkthrough figcaption { margin-top: 12px; font-size: var(--step--1); color: var(--ink-soft); }
+/* The white paper download, under the walkthrough */
+.paper-cta { display: flex; align-items: center; gap: 18px; max-width: 1120px; margin-top: 28px; padding: 18px 22px;
+  border: 1px solid var(--rule); border-radius: 14px; background: var(--accent-soft); }
+.paper-cta .paper-icon { flex: none; color: var(--accent); }
+.paper-cta .paper-text { flex: 1; }
+.paper-cta h3 { margin: 0 0 4px; }
+.paper-cta p { margin: 0; color: var(--ink-soft); font-size: var(--step--1); }
+.paper-cta .button { flex: none; white-space: nowrap; }
+@media (max-width: 640px) { .paper-cta { flex-direction: column; align-items: flex-start; } }
 .button svg + * , .button svg { vertical-align: middle; }
