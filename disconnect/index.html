@@ -45,13 +45,21 @@
       <p><a class="c2qb-link" id="ssoConnect" href="https://bulkauto-broker.timetool.workers.dev/v1/sso/connect?env=production"
         aria-label="Connect to QuickBooks"><img class="c2qb-base" src="../img/C2QB_green_btn_med_default.svg" alt="" width="223" height="36"><img class="c2qb-hover" src="../img/C2QB_green_btn_med_hover.svg" alt="" width="223" height="36"></a></p>
       <p class="note">Signs you in with your Intuit account, then opens BulkAuto on the company you choose.</p>
+      <!-- The Disconnect URL is OpenID-enabled (Intuit's App Store requirement): this page goes straight on to Intuit
+           Single Sign-on through the BulkAuto sign-in service, asking only who you are (no QuickBooks access, so the
+           company stays disconnected), and then opens BulkAuto, which shows the connection ended. The link below does
+           the same if the page stays here. -->
+      <p><a id="ssoDisconnected" href="https://bulkauto-broker.timetool.workers.dev/v1/sso/disconnected?env=production">Open BulkAuto</a></p>
       <script>
         (function () {
           // ?env=sandbox: the Development disconnect address, for sandbox (test) companies. Nothing else in the
           // address is read (QuickBooks may add the company's ID; it isn't used or sent anywhere).
-          if (new URLSearchParams(location.search).get('env') === 'sandbox') {
-            document.getElementById('ssoConnect').href = 'https://bulkauto-broker.timetool.workers.dev/v1/sso/connect?env=sandbox';
-          }
+          var env = new URLSearchParams(location.search).get('env') === 'sandbox' ? 'sandbox' : 'production';
+          var broker = 'https://bulkauto-broker.timetool.workers.dev';
+          document.getElementById('ssoConnect').href = broker + '/v1/sso/connect?env=' + env;
+          var to = broker + '/v1/sso/disconnected?env=' + env;
+          document.getElementById('ssoDisconnected').href = to;
+          location.replace(to);
         })();
       </script>
 
