@@ -212,10 +212,6 @@ kbd { font-family: var(--font-mono); font-size: 0.85em; border: 1px solid var(--
 .panel ul { margin: 0 0 10px; padding-left: 1.2em; }
 .muted { color: var(--ink-soft); }
 .note { color: var(--ink-soft); font-size: 0.9em; margin-top: 0; }
-.c2qb-link { display: inline-block; line-height: 0; border-radius: 4px; }
-.c2qb-link img { display: block; }
-.c2qb-link .c2qb-hover, .c2qb-link:hover .c2qb-base { display: none; }
-.c2qb-link:hover .c2qb-hover { display: block; }
 dl.specs { margin: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 20px; }
 dl.specs dt { font-weight: 650; }
 dl.specs dd { margin: 0; color: var(--ink-soft); }

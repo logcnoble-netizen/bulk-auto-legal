@@ -41,15 +41,17 @@
 
       <h2>Reconnect</h2>
       <!-- Intuit Single Sign-on: connects again through the BulkAuto sign-in service, then opens the app on the
-           company (the same way as Get integration now in the QuickBooks App Store). -->
-      <p><a class="c2qb-link" id="ssoConnect" href="https://bulkauto-broker.timetool.workers.dev/v1/sso/connect?env=production"
-        aria-label="Connect to QuickBooks"><img class="c2qb-base" src="../img/C2QB_green_btn_med_default.svg" alt="" width="223" height="36"><img class="c2qb-hover" src="../img/C2QB_green_btn_med_hover.svg" alt="" width="223" height="36"></a></p>
+           company (the same way as Get integration now in the QuickBooks App Store). Intuit's Connect to QuickBooks
+           button image is used only inside the app (Intuit's 2026 review): here it's a plain link. -->
+      <div class="actions">
+        <a class="button" id="ssoConnect" href="https://bulkauto-broker.timetool.workers.dev/v1/sso/connect?env=production">Connect the company again</a>
+      </div>
       <p class="note">Signs you in with your Intuit account, then opens BulkAuto on the company you choose.</p>
       <!-- The Disconnect URL is OpenID-enabled (Intuit's App Store requirement): this page goes straight on to Intuit
            Single Sign-on through the BulkAuto sign-in service, asking only who you are (no QuickBooks access, so the
            company stays disconnected), and then opens BulkAuto, which shows the connection ended. The link below does
            the same if the page stays here. -->
-      <p><a id="ssoDisconnected" href="https://bulkauto-broker.timetool.workers.dev/v1/sso/disconnected?env=production">Open BulkAuto</a></p>
+      <p><a id="ssoDisconnected" href="https://bulkauto-broker.timetool.workers.dev/v1/sso/disconnected?env=production">Sign in with Intuit and open BulkAuto</a></p>
       <script>
         (function () {
           // ?env=sandbox: the Development disconnect address, for sandbox (test) companies. Nothing else in the
@@ -66,7 +68,7 @@
       <p>Or from the app:</p>
       <ol class="steps">
         <li><b>Open BulkAuto</b> from the Start menu or your desktop.</li>
-        <li><b>Click Connect to QuickBooks.</b>
+        <li><b>Sign in with Intuit if the app asks, then click Connect to QuickBooks.</b>
           <p>Or, if the app is working on another company, open the company menu at the top and choose <b>Connect
             another company</b>.</p></li>
         <li><b>Approve access on Intuit's sign-in page.</b>
